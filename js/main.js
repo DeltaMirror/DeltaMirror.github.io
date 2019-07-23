@@ -128,7 +128,7 @@ window.onload = () => {
     var glitchParams = {
         seed:       rNF(99), // integer between 0 and 99
         quality:    88, // integer between 0 and 99
-        amount:     5, // integer between 0 and 99
+        amount:     8, // integer between 0 and 99
         iterations: 1 // integer between 0 and 99
     };
 
@@ -153,7 +153,7 @@ window.onload = () => {
 
     //* 背景图的路径在这里改,把图片放在js文件夹内
     image.style.width = w
-    image.src = './js/RADIO-01.jpg'
+    image.src = './js/delta-mirror-background.jpg'
 
 
 
