@@ -4,6 +4,8 @@ const rNF = (x) => {
     return Math.floor(Math.random() * x)
 }
 
+
+
 //TODO Tool functions End
 
 
@@ -15,16 +17,28 @@ window.onload = () => {
     let format = '.mp3'
     let sound, soundSprites
     let soundFM, soundFMSprites
-    let soundTV,soundSong
+    let soundTV,soundAudio1
     let fm = 0
+    let btnAllowed = false
+    let btnToggle = false
+    const lanDetect = () => {
+        if (btnToggle) {
+            return 'ZH'
+        } else {
+            return ''
+        }
+    }
 
     //TODO 点击后加载音频和事件
-    document.getElementById('btn1').onclick = () => {
+    document.getElementById('btn1').onclick = (e) => {
+        //* [`${path}文件名${format}`]
         sound = new Howl({
+            //杂音
             src: [`${path}pureNoise${format}`]
         })
 
         soundFM = new Howl({
+            //带人声的杂音
             src: [`${path}changeFM+${format}`]
         })
 
@@ -33,8 +47,8 @@ window.onload = () => {
             loop: true
         })
 
-        soundSong = new Howl({
-            src:[`${path}song1${format}`],
+        soundAudio1 = new Howl({
+            src:[`${path}audio1${format}`],
             loop:true
         })
 
@@ -53,16 +67,47 @@ window.onload = () => {
             soundFMSprites = Object.keys(soundFM._sprite)
         })
 
-        //TODO 添加滑轮事件给窗口
-        document.body.addEventListener("wheel", wheelHandler, false)
+        
+
+        //把按钮提示背景色取消
+        document.getElementById("controller").style.background = 'transparent'
+
+        e.target.remove()
+        document.getElementById('tip').style.display = 'block'
+        document.getElementById('btn2').style.display = 'block'
 
     }
 
+    //TODO 语言切换,更改播放路径
+    //* 中文版的音频命名方式: ZH + oringal name
+    document.getElementById('btn2').onclick=(e)=>{
+        btnToggle = !btnToggle
+        if(btnToggle){
+            e.target.innerHTML = 'Chinese'
+        }else{
+            e.target.innerHTML = 'English'
+        }
+
+        //* 每增加一个段音频,都要复制一组这段代码, src:[`${path}${lanDetect()}文件名${format}`]
+
+        //* start
+        soundAudio1.stop()
+        soundAudio1 = new Howl({
+            src: [`${path}${lanDetect()}audio1${format}`],
+            loop:true
+        })//* end
+
+    }
+
+    //TODO 提示
+    document.querySelector('#tip div').onclick=(e)=>{
+        document.body.addEventListener("wheel", wheelHandler, false)
+        e.target.parentNode.remove()
+    }
 
 
-
-    let fmDegreeArr = [88,90,93,96,100,104,106,108]
-    let amDegreeArr = [540,600,700,800,1000,1200,1400,1600]
+    // let fmDegreeArr = [88,90,93,96,100,104,106,108]
+    // let amDegreeArr = [540,600,700,800,1000,1200,1400,1600]
 
 
 
@@ -70,8 +115,8 @@ window.onload = () => {
     //TODO PaperCanvas
     let paperCanvas = document.createElement('canvas')
     paperCanvas.id = 'paperCanvas'
-    paperCanvas.width = 1024
-    paperCanvas.height = 1024
+    // paperCanvas.width = 1024
+    // paperCanvas.height = 1024
     document.body.appendChild(paperCanvas)
     paper.setup('paperCanvas')
     let pathText
@@ -79,11 +124,12 @@ window.onload = () => {
 
     var image = new Image();
 
+    //* glitch效果的参数在这里改!!!
     var glitchParams = {
         seed:       rNF(99), // integer between 0 and 99
-        quality:    22, // integer between 0 and 99
-        amount:     10, // integer between 0 and 99
-        iterations: 1  // integer
+        quality:    88, // integer between 0 and 99
+        amount:     5, // integer between 0 and 99
+        iterations: 1 // integer between 0 and 99
     };
 
 
@@ -105,28 +151,35 @@ window.onload = () => {
             } );
     };
 
+    //* 背景图的路径在这里改,把图片放在js文件夹内
     image.style.width = w
     image.src = './js/RADIO-01.jpg'
 
 
+
     project.activeLayer.clear()
     let pathG = new Group()
-
+    //* 红色刻度指针的长度
+    let lineLength  = 120 
     let verticalLine = new Path.Line([0,0])
-    verticalLine.addSegment(new Point(0,120))
+    verticalLine.addSegment(new Point(0, lineLength))
     verticalLine.name = "redLine"
+
+    //* 红色刻度指针的样式
     verticalLine.style={
         strokeColor:'red',
         strokeWidth:5
     }
+
     pathG.addChild(verticalLine)
-    // pathG.fitBounds(view.bounds)
-    pathG.position.x += 300
+    
+    //* 指针偏移的距离, 如果对不齐刻度,改这里
+    pathG.position.x += 200
     pathG.position.y += h/2
     pathG.scale(0.8)
 
     let timer
-
+    let line = pathG.children['redLine']
     function wheelHandler(e) {
 
         //TODO 鼠标滑轮改变fm值
@@ -135,10 +188,11 @@ window.onload = () => {
         fm += Math.round(delta)
         if (fm < 0) fm = 0
         if(fm==0) return
+        console.log("fm当前值:" + Math.floor(fm / 100));
         switch (Math.floor(fm/100)) {
             //TODO 播放不同的音频
             case 3:
-                //TODO 当FM值滚动到300的时候会激活这个音频
+                //TODO 当FM值滚动到3的时候会激活这个音频
                 sound.stop()
                 soundFM.stop()
                 sound.play(soundSprites[rNF(soundSprites.length)])
@@ -150,15 +204,16 @@ window.onload = () => {
                 break;
             case 6:
                 sound.stop()
+                soundTV.pause()
                 soundFM.stop()
                 sound.play(soundSprites[rNF(soundSprites.length)])
                 soundFM.play(soundFMSprites[rNF(soundFMSprites.length)])
-                if (!soundSong.playing()) {
-                    soundSong.play()
+                if (!soundAudio1.playing()) {
+                    soundAudio1.play()
                 }
                 break;
             default:
-                soundSong.pause()
+                soundAudio1.pause()
                 soundTV.pause()
                 sound.stop()
                 soundFM.stop()
@@ -167,10 +222,11 @@ window.onload = () => {
                 break;
 
         }
-
-        if(fm<1000){
-            let line = pathG.children['redLine']
-            line.position.x += delta
+        // console.log(image.width);
+        
+        line.position.x += delta
+        if (line.position.x > image.width*0.9-200) {
+            line.position.x = image.width * 0.9-200
         }
 
         clearTimeout(timer);

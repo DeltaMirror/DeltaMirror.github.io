@@ -1,34 +1,82 @@
+@dark: #363A3D;
+
 body{
+  font-family: 'Roboto Slab', serif;
   margin: 0;
-  padding: 0;
+  padding-left: 10%;
+  padding-right: 10%;
   padding-bottom: 200vh;
   position: relative;
-  font-family:Helvetica;
+  // font-family:Helvetica;
   //background-color: #000;
+  color:@dark;
   max-width: 1440px;
+  overflow: hidden;
 
 }
 
 #controller{
+  width: 100%;
+
+  background-image: linear-gradient(to right, #a8edea 0%, #fed6e3 100%);
   position: fixed;
   right:0;
   top: 0vh;
-  padding: 30px;
-  #btn1{
-    padding: 20px;
-    border: black 4px solid;
-    cursor: pointer;
-    &:hover{
-      background-color: black;
-      color:white;
-    }
-  }
+  padding: 20px;
+  text-align: center;
   z-index: 2;
+}
+
+#tip{
+  width:20vw;
+  display: none;
+  text-align:center;
+  padding: 30px 20px;
+  background-image: linear-gradient(to right, #a8edea 0%, #fed6e3 100%);
+  border-radius: 5px;
+  position: fixed;
+  z-index: 3;
+  top:20vh;
+  transform: translateX(50px);
+  div{
+    margin: 20px auto;
+    // position: absolute;
+    // bottom: 5vh;
+    // left:auto;
+  }
+}
+
+.btn {
+  width: 8vw;
+  text-align: center;
+  padding: 15px;
+  border: @dark 3px solid;
+  border-radius: 50px;
+  cursor: pointer;
+  &:hover {
+    background-color: @dark;
+    color: white;
+  }
+}
+
+#btn1{
+  margin: 0 auto;
+  width: 10vw;
+  
+}
+#btn2{
+  
+  float: right;
+  display:none;
+  
+ &:before{
+   content:'🇨🇳 / 🇬🇧 '
+ }
 }
 
 
 #paperCanvas{
-  width:100vw;
+  // width:80vw;
   height:100vh;
   position: fixed;
   top: 0vh;
@@ -38,7 +86,7 @@ body{
 
 #bgImg{
   position:fixed;
-  width:100%;
-  left:auto;
-  top:0;
+  width:80%;
+  height:80vh;
+  top:15vh;
 }
