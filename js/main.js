@@ -74,30 +74,30 @@ window.onload = () => {
 
         e.target.remove()
         document.getElementById('tip').style.display = 'block'
-        document.getElementById('btn2').style.display = 'block'
+        // document.getElementById('btn2').style.display = 'block'
 
     }
 
-    //TODO 语言切换,更改播放路径
+    // deleted 语言切换,更改播放路径
     //* 中文版的音频命名方式: ZH + oringal name
-    document.getElementById('btn2').onclick=(e)=>{
-        btnToggle = !btnToggle
-        if(btnToggle){
-            e.target.innerHTML = 'Chinese'
-        }else{
-            e.target.innerHTML = 'English'
-        }
-
-        //* 每增加一个段音频,都要复制一组这段代码, src:[`${path}${lanDetect()}文件名${format}`]
-
-        //* start
-        soundAudio1.stop()
-        soundAudio1 = new Howl({
-            src: [`${path}${lanDetect()}audio1${format}`],
-            loop:true
-        })//* end
-
-    }
+    // document.getElementById('btn2').onclick=(e)=>{
+    //     btnToggle = !btnToggle
+    //     if(btnToggle){
+    //         e.target.innerHTML = 'Chinese'
+    //     }else{
+    //         e.target.innerHTML = 'English'
+    //     }
+    //
+    //     //* 每增加一个段音频,都要复制一组这段代码, src:[`${path}${lanDetect()}文件名${format}`]
+    //
+    //     //* start
+    //     soundAudio1.stop()
+    //     soundAudio1 = new Howl({
+    //         src: [`${path}${lanDetect()}audio1${format}`],
+    //         loop:true
+    //     })//* end
+    //
+    // }
 
     //TODO 提示
     document.querySelector('#tip div').onclick=(e)=>{

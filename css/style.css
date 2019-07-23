@@ -9,6 +9,16 @@ body {
   max-width: 1440px;
   overflow: hidden;
 }
+#logoBox {
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 20px;
+  z-index: 1;
+}
+#logo {
+  width: 50%;
+}
 #controller {
   width: 100%;
   background-image: linear-gradient(to right, #a8edea 0%, #fed6e3 100%);
@@ -69,3 +79,4 @@ body {
   height: 80vh;
   top: 15vh;
 }
+/*# sourceMappingURL=style.css.map */
