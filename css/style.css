@@ -8,6 +8,7 @@ body {
   color: #363A3D;
   max-width: 1440px;
   overflow: hidden;
+  background-image: url('../img/bg.jpg');
 }
 #logoBox {
   position: fixed;
@@ -79,4 +80,3 @@ body {
   height: 80vh;
   top: 15vh;
 }
-/*# sourceMappingURL=style.css.map */

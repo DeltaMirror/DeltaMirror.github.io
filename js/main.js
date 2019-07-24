@@ -71,9 +71,9 @@ window.onload = () => {
 
         //把按钮提示背景色取消
         document.getElementById("controller").style.background = 'transparent'
-
+            document.body.addEventListener("wheel", wheelHandler, false)
         e.target.remove()
-        document.getElementById('tip').style.display = 'block'
+        // document.getElementById('tip').style.display = 'block'
         // document.getElementById('btn2').style.display = 'block'
 
     }
@@ -99,11 +99,11 @@ window.onload = () => {
     //
     // }
 
-    //TODO 提示
-    document.querySelector('#tip div').onclick=(e)=>{
-        document.body.addEventListener("wheel", wheelHandler, false)
-        e.target.parentNode.remove()
-    }
+    // //TODO 提示
+    // document.querySelector('#tip div').onclick=(e)=>{
+    //     document.body.addEventListener("wheel", wheelHandler, false)
+    //     e.target.parentNode.remove()
+    // }
 
 
     // let fmDegreeArr = [88,90,93,96,100,104,106,108]
@@ -174,8 +174,8 @@ window.onload = () => {
     pathG.addChild(verticalLine)
     
     //* 指针偏移的距离, 如果对不齐刻度,改这里
-    pathG.position.x += 200
-    pathG.position.y += h/2
+    pathG.position.x += 300
+    pathG.position.y += h/1.5
     pathG.scale(0.8)
 
     let timer
