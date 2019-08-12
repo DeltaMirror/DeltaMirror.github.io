@@ -5,6 +5,7 @@ body {
   position: relative;
   color: #363A3D;
   max-width: 1980px;
+  width: 1980px;
   overflow: hidden;
   background-image: url('../img/bg.jpg');
 }
