@@ -175,7 +175,7 @@ window.onload = () => {
     
     //* 指针偏移的距离, 如果对不齐刻度,改这里
     pathG.position.x += 300
-    pathG.position.y += h/1.5
+    pathG.position.y += h/2 - 100
     pathG.scale(0.8)
 
     let timer
@@ -225,6 +225,9 @@ window.onload = () => {
         // console.log(image.width);
         
         line.position.x += delta
+        if (line.position.x < 300) {
+            line.position.x = 300
+        }
         if (line.position.x > image.width*0.9-200) {
             line.position.x = image.width * 0.9-200
         }
