@@ -1,9 +1,9 @@
 body {
-  font-family: 'Armata', sans-serif;
+  font-family: 'Space Mono', monospace;
   margin: 0;
   padding-bottom: 200vh;
   position: relative;
-  color: #363A3D;
+  color: white;
   max-width: 1980px;
   width: 1980px;
   overflow: hidden;
@@ -21,12 +21,9 @@ body {
 #logoBox:hover {
   color: red;
 }
-#logo {
-  width: 50%;
-}
 #controller {
   width: 100%;
-  background-image: linear-gradient(to right, #a8edea 0%, #fed6e3 100%);
+  background-color: #1b1c1d;
   position: fixed;
   right: 0;
   top: 0vh;
@@ -37,21 +34,29 @@ body {
 #info {
   height: 100%;
   width: 100%;
-  margin: 0;
+  margin: auto auto;
   display: none;
   text-align: center;
   padding: 30px 20px;
-  background-image: linear-gradient(to right, #090a0a 0%, #000000 100%);
+  background-color: rgba(0, 0, 0, 0.8);
   border-radius: 5px;
   position: fixed;
   z-index: 3;
   color: white;
 }
-#info h1 {
-  font-size: 5em;
+#info p {
+  width: 600px;
+  text-align: left;
+  margin: 50px auto;
+  line-height: 30px;
+  font-size: 14pt;
+}
+#info #logo {
+  margin-top: 13%;
+  font-size: 4em;
 }
 #info .btn {
-  margin: 300px auto;
+  margin: 0px auto;
 }
 .btn {
   width: 8vw;
@@ -67,7 +72,7 @@ body {
 }
 #btn1 {
   margin: 0 auto;
-  width: 10vw;
+  width: 15vw;
 }
 #btn2 {
   float: right;

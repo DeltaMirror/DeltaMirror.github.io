@@ -2,7 +2,7 @@
 
 body{
   position: relative;
-  font-family: 'Armata', sans-serif;
+  font-family: 'Space Mono', monospace;
   margin: 0;
   // padding-left: 10%;
   // padding-right: 10%;
@@ -10,7 +10,7 @@ body{
   position: relative;
   // font-family:Helvetica;
   //background-color: #000;
-  color:@dark;
+  color:white;
   max-width: 1980px;
   width:1980px;
   overflow: hidden;
@@ -31,13 +31,13 @@ body{
   }
 }
 #logo{
-  width:50%;
+  // width:50%;
 }
 
 #controller{
   width: 100%;
 
-  background-image: linear-gradient(to right, #a8edea 0%, #fed6e3 100%);
+  background-color: rgb(27, 28, 29);
   position: fixed;
   right:0;
   top: 0vh;
@@ -50,20 +50,29 @@ body{
   // width:20vw;
   height: 100%;
   width: 100%;
-  margin:0;
+  margin:auto auto;
   display: none;
   text-align:center;
   padding: 30px 20px;
-  background-image: linear-gradient(to right, #090a0a 0%, #000000 100%);
+  background-color: rgba(0, 0, 0, 0.8);
   border-radius: 5px;
   position: fixed;
   z-index: 3;
   color:white;
-  h1{
-    font-size: 5em;
+  p{
+    width:600px;
+    text-align:left;
+    margin:50px auto;
+    line-height: 30px;
+    font-size: 14pt;
+
+  }
+  #logo{
+  margin-top: 13%;
+    font-size: 4em;
   }
   .btn{
-    margin: 300px auto;
+    margin: 0px auto;
   }
   
 }
@@ -83,7 +92,7 @@ body{
 
 #btn1{
   margin: 0 auto;
-  width: 10vw;
+  width: 15vw;
   
 }
 #btn2{

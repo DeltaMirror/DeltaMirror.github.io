@@ -170,23 +170,23 @@ window.onload = () => {
     project.activeLayer.clear()
     let pathG = new Group()
     //* 红色刻度指针的长度
-    let lineLength  = 150 
+    let lineLength  = h
     let verticalLine = new Path.Line([0,0])
     verticalLine.addSegment(new Point(0, lineLength))
     verticalLine.name = "redLine"
 
     //* 红色刻度指针的样式
     verticalLine.style={
-        strokeColor:'red',
-        strokeWidth:5
+        strokeColor:'#ff0000',
+        strokeWidth:1
     }
 
     pathG.addChild(verticalLine)
     
     //* 指针偏移的距离, 如果对不齐刻度,改这里
     pathG.position.x += 300
-    pathG.position.y += h/2 - 200
-    pathG.scale(0.8)
+    // pathG.position.y += h/2 - 200
+    // pathG.scale(0.8)
 
     let timer
     let line = pathG.children['redLine']
