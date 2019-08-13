@@ -2,7 +2,7 @@
 
 body{
   position: relative;
-  font-family: 'Roboto Slab', serif;
+  font-family: 'Armata', sans-serif;
   margin: 0;
   // padding-left: 10%;
   // padding-right: 10%;
@@ -20,10 +20,15 @@ body{
 
 #logoBox{
   position: fixed;
-  left: 0;
-  top: 0;
+  left: 10px;
+  top: 10px;
   padding: 20px;
-  z-index: 1;
+  z-index: 2;
+  color:white;
+  cursor: pointer;
+  &:hover{
+    color:red;
+  }
 }
 #logo{
   width:50%;
@@ -41,23 +46,26 @@ body{
   z-index: 2;
 }
 
-#tip{
-  width:20vw;
+#info{
+  // width:20vw;
+  height: 100%;
+  width: 100%;
+  margin:0;
   display: none;
   text-align:center;
   padding: 30px 20px;
-  background-image: linear-gradient(to right, #a8edea 0%, #fed6e3 100%);
+  background-image: linear-gradient(to right, #090a0a 0%, #000000 100%);
   border-radius: 5px;
   position: fixed;
   z-index: 3;
-  top:20vh;
-  transform: translateX(50px);
-  div{
-    margin: 20px auto;
-    // position: absolute;
-    // bottom: 5vh;
-    // left:auto;
+  color:white;
+  h1{
+    font-size: 5em;
   }
+  .btn{
+    margin: 300px auto;
+  }
+  
 }
 
 .btn {

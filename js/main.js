@@ -78,6 +78,13 @@ window.onload = () => {
 
     }
 
+    document.getElementById('logoBox').onclick =(e)=>{
+        document.getElementById('info').style.display = 'block'
+        document.querySelector('#info .btn').onclick=(e)=>{
+            document.getElementById('info').style.display = 'none'
+        }
+    }
+
     // deleted 语言切换,更改播放路径
     //* 中文版的音频命名方式: ZH + oringal name
     // document.getElementById('btn2').onclick=(e)=>{
@@ -120,7 +127,10 @@ window.onload = () => {
     document.body.appendChild(paperCanvas)
     paper.setup('paperCanvas')
     let pathText
-    let [w,h] = [window.innerWidth,window.innerHeight]
+    // let [w,h] = [window.innerWidth,window.innerHeight]
+    let [w,h]=[1920,1080]
+    // console.log(w);
+    
 
     var image = new Image();
 
@@ -160,7 +170,7 @@ window.onload = () => {
     project.activeLayer.clear()
     let pathG = new Group()
     //* 红色刻度指针的长度
-    let lineLength  = 120 
+    let lineLength  = 150 
     let verticalLine = new Path.Line([0,0])
     verticalLine.addSegment(new Point(0, lineLength))
     verticalLine.name = "redLine"
@@ -175,7 +185,7 @@ window.onload = () => {
     
     //* 指针偏移的距离, 如果对不齐刻度,改这里
     pathG.position.x += 300
-    pathG.position.y += h/2 - 100
+    pathG.position.y += h/2 - 200
     pathG.scale(0.8)
 
     let timer
@@ -228,8 +238,8 @@ window.onload = () => {
         if (line.position.x < 300) {
             line.position.x = 300
         }
-        if (line.position.x > image.width*0.9-200) {
-            line.position.x = image.width * 0.9-200
+        if (line.position.x > image.width*0.7-200) {
+            line.position.x = image.width * 0.7-200
         }
 
         clearTimeout(timer);
