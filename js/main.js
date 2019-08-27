@@ -74,6 +74,8 @@ window.onload = () => {
                 sound._sprite[`part${i}`] = [i * 1000, [i + 1] * 1000]
             }
             soundSprites = Object.keys(sound._sprite)
+            console.log('soundSprites loaded');
+            
         });
 
         soundFM.once('load', () => {
@@ -81,6 +83,9 @@ window.onload = () => {
                 soundFM._sprite[`part${i}`] = [i * 500, [i + 1] * 500]
             }
             soundFMSprites = Object.keys(soundFM._sprite)
+            console.log(soundFMSprites.length);
+            
+            console.log('soundFMSprites loaded');
         })
 
         
@@ -245,8 +250,8 @@ window.onload = () => {
                 // soundTV.pause()
                 sound.stop()
                 soundFM.stop()
-                soundFM.play(soundFMSprites[rNF(soundFMSprites.length-1)])
-                sound.play(soundSprites[rNF(soundSprites.length-1)])
+                if(soundFMSprites) soundFM.play(soundFMSprites[rNF(soundFMSprites.length)])
+                if(soundSprites) sound.play(soundSprites[rNF(soundSprites.length)])
                 break;
 
         }
