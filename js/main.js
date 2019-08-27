@@ -183,6 +183,8 @@ window.onload = () => {
         fm += Math.round(delta)
         if (fm < 0) fm = 0
         if(fm==0) return
+        if(!soundFMSprites) return
+        if(!soundSprites) return 
         console.log("fm当前值:" + Math.floor(fm / 100));
         switch (Math.floor(fm/100)) {
             //TODO 播放不同的音频
