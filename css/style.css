@@ -1,5 +1,5 @@
 body {
-  font-family: 'Space Mono', monospace;
+  font-family: 'Adamina', serif;
   margin: 0;
   padding-bottom: 200vh;
   position: relative;
@@ -52,7 +52,7 @@ body {
   font-size: 14pt;
 }
 #info #logo {
-  margin-top: 13%;
+  margin-top: 10%;
   font-size: 4em;
 }
 #info .btn {
@@ -72,7 +72,7 @@ body {
 }
 #btn1 {
   margin: 0 auto;
-  width: 15vw;
+  width: 20vw;
 }
 #btn2 {
   float: right;

@@ -18,7 +18,7 @@ window.onload = () => {
     let sound, soundSprites
     let soundFM, soundFMSprites
     let soundTV,soundAudio1
-    let soundAudioEnd,soundAudioRec1
+    let soundAudioEnd,soundAudioRec1,soundAudioRec2
     let fm = 0
     let btnAllowed = false
     let btnToggle = false
@@ -60,6 +60,11 @@ window.onload = () => {
 
         soundAudioRec1 = new Howl({
             src:[`${path}audioRec1${format}`],
+            loop:true
+        })
+
+        soundAudioRec2 = new Howl({
+            src:[`${path}audioRec2${format}`],
             loop:true
         })
 
@@ -192,6 +197,15 @@ window.onload = () => {
             //         soundTV.play()
             //     }
             //     break;
+            case 2:
+                sound.stop()
+                soundFM.stop()
+                sound.play(soundSprites[rNF(soundSprites.length)])
+                soundFM.play(soundFMSprites[rNF(soundFMSprites.length)])
+                if (!soundAudioRec2.playing()) {
+                    soundAudioRec2.play()
+                }
+                break;
             case 6:
                 sound.stop()
                 // soundTV.pause()
@@ -225,6 +239,7 @@ window.onload = () => {
                 soundAudio1.pause()
                 soundAudioEnd.pause()
                 soundAudioRec1.pause()
+                soundAudioRec2.pause()
                 // soundTV.pause()
                 sound.stop()
                 soundFM.stop()
